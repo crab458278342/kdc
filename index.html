@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="apple-touch-icon" href="icon.png" />
+<link rel="shortcut icon" href="icon.png" />
+<link rel="icon" href="icon.png" />
+<title>超级卡丁车 - Super Sprint Karts</title>
+<meta name="keywords" content="超级卡丁车,超级卡丁车html5游戏" />
+<meta name="description" content="超级卡丁车html5游戏,超级卡丁车手机在线游戏" />
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.01, minimal-ui" />
+<style>
+body {
+margin: 0px;
+padding: 0px;
+width: 100%;
+background-color:black;
+}	
+canvas {	
+-ms-touch-action: none;
+image-rendering: -o-crisp-edges;           
+image-rendering: optimize-contrast;        
+-ms-interpolation-mode: nearest-neighbor;  
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+-moz-tap-highlight-color: rgba(0,0,0,0);
+tap-highlight-color: rgba(0,0,0,0);
+user-select: none;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+}
+</style>
+<script src="viewporter.js"></script>
+</head>
+<script type="text/javascript" src="./js/game.js"></script>
+<body>
+<div id="spilgames-splash-screen" class="spilgames-splash-screen-gone"></div>
+<div id="viewporter">
+<canvas id="canvas" moz-opaque></canvas>
+</div>
+</body>
+<script src="TweenMax.min.js"></script>
+<script src="howler.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+window.shareData = {
+"timeLineLink": "http://yx8.com/game/supersprintkarts/",
+"sendFriendLink": "http://yx8.com/game/supersprintkarts/",
+"weiboLink": "http://yx8.com/game/supersprintkarts/",
+"tTitle": "不用下载就能玩跑跑卡丁车，你有没有被时代OUT呢？快来挑战下吧！",
+"tContent": "跑跑卡丁车在线玩，去向好友挑战吧~",
+"fTitle": "不用下载就能玩跑跑卡丁车，你有没有被时代OUT呢？快来挑战下吧！",
+"fContent": "跑跑卡丁车在线玩，去向好友挑战吧",
+"wContent": "跑跑卡丁车在线玩，去向好友挑战吧"
+};
+// 发送给好友
+WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+WeixinJSBridge.invoke('sendAppMessage', {
+"img_url": "http://yx8.com/game/supersprintkarts/pao.jpg", //这里地址要改
+"img_width": "401",
+"img_height": "275",
+"link": window.shareData.sendFriendLink,
+"desc": window.shareData.fContent,
+"title": window.shareData.fTitle
+}, function (res) {
+_report('send_msg', res.err_msg);
+})
+});
+// 分享到朋友圈
+WeixinJSBridge.on('menu:share:timeline', function (argv) {
+WeixinJSBridge.invoke('shareTimeline', {
+"img_url": "http://yx8.com/game/supersprintkarts/pao.jpg",//这里地址要改
+"img_width": "401",
+"img_height": "275",
+"link": window.shareData.timeLineLink,
+"desc": window.shareData.tContent,
+"title": window.shareData.tTitle
+}, function (res) {
+_report('timeline', res.err_msg);
+});
+});
+// 分享到微博
+}, false)
+</script>
+
+</html>
